@@ -1,0 +1,69 @@
+﻿@model Gmail.Models.gmail
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        @using (Html.BeginForm("Index","EmailSetup",FormMethod.Post,new { enctype = "multipart/form-data"}))
+        {
+            <center>
+                <h1>How to Send a mail</h1>
+                <h2>Using MVC5</h2>
+                <table>
+                    <tr>
+                        <td style="width: 80px">
+                            To:
+
+                        </td>
+                        <td>@Html.TextBoxFor(model => model.To)</td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Cc:
+                        </td>
+                        <td>@Html.TextBoxFor(model => model.Cc)</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Bcc:
+                        </td>
+                        <td>@Html.TextBoxFor(model => model.Bcc)</td>
+                    </tr>
+
+
+                    <tr>
+                        <td>
+                            Subject:
+                        </td>
+                        <td>@Html.TextBoxFor(model => model.Subject)</td>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            Body:
+                        </td>
+                        <td>@Html.TextAreaFor(model => model.Body, new { rows = "3", cols = "16" })</td>
+                    </tr>
+                    <tr>
+                       <td></td>
+                        <td>
+                            <input type="submit" value="Send" />
+                        </td>
+                    </tr>
+                </table>
+                <br />
+                <span style="color:green">@ViewBag.Message</span>
+            </center>
+        }
+    </div>
+</body>
+</html>
